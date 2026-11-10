@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b16">
+  <meta name="description" content="Entdecke und lade Plugins kostenlos herunter.">
+  <title>PLUGBASE – Plugin-Downloads</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="plugins.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="background-grid" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html" aria-label="Zur Startseite">
+        <span class="brand-logo" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span class="brand-name" data-site-name>PLUGBASE</span><span class="brand-dot">.</span>
+      </a>
+      <nav class="top-nav" aria-label="Hauptnavigation">
+        <a class="nav-link active" href="#plugins">Plugins</a>
+        <a class="nav-link" href="#so-gehts">So geht's</a>
+      </nav>
+      <a class="header-cta" href="#plugins">Alle Plugins <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-content">
+        <div class="hero-eyebrow"><span class="tiny-star">✦</span><span data-eyebrow>DEIN PLUGIN-HUB</span><span class="eyebrow-line"></span></div>
+        <h1 id="hero-title">Kleine Plugins.<br><span>Große Möglichkeiten.</span></h1>
+        <p class="hero-description" id="hero-description">Entdecke neue Plugins, finde das passende Tool und lade deine Lieblings-Plugins herunter.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#plugins">Plugins entdecken <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          <a class="button button-ghost" href="#so-gehts">Mehr erfahren <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-trust"><div class="hero-avatars" aria-hidden="true"><span>⚡</span><span>🎨</span><span>🧩</span></div><div><strong>Kostenlose Downloads</strong><small>Einfach suchen, auswählen und loslegen</small></div></div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+        <div class="visual-glow"></div>
+        <div class="showcase-card">
+          <div class="showcase-top"><span class="terminal-lights"><i></i><i></i><i></i></span><span>plugin.manager</span><span class="showcase-dots">•••</span></div>
+          <div class="showcase-body"><div class="showcase-icon">✦</div><div class="showcase-kicker">READY TO INSTALL</div><div class="showcase-title">Deine nächste<br>Lieblings-Erweiterung.</div><div class="showcase-progress"><div></div></div><div class="showcase-bottom"><span>● &nbsp;Verfügbar</span><span>100%</span></div></div>
+        </div>
+        <div class="float-card float-card-top"><span class="float-icon">↓</span><div><strong>1-Klick-Download</strong><small>Schnell & unkompliziert</small></div></div>
+        <div class="float-card float-card-bottom"><span class="float-icon purple">✦</span><div><strong>Neue Möglichkeiten</strong><small>Mit jedem Plugin</small></div></div>
+      </div>
+    </section>
+
+    <section class="stats-band" aria-label="Website-Informationen">
+      <div class="container stats-inner">
+        <div class="stat"><strong id="stat-plugins">0</strong><span>Plugins im Katalog</span></div>
+        <span class="stat-divider"></span>
+        <div class="stat"><strong id="stat-categories">0</strong><span>Kategorien</span></div>
+        <span class="stat-divider"></span>
+        <div class="stat"><strong>100%</strong><span>Einfach zugänglich</span></div>
+      </div>
+    </section>
+
+    <section class="catalog container" id="plugins">
+      <div class="section-intro"><div><span class="section-label"><span class="section-line"></span> ENTDECKEN</span><h2>Finde dein nächstes <span>Plugin.</span></h2><p>Alles an einem Ort. Such dir aus, was zu deinem Projekt passt.</p></div><span class="catalog-count" id="result-badge">0 Ergebnisse</span></div>
+      <div class="demo-banner" id="demo-banner" hidden><span class="demo-banner-icon">ⓘ</span><div><strong>Das ist eine Demo-Website.</strong> Die angezeigten ZIP-Dateien sind Testdownloads, keine echten Plattform-Plugins. Ersetze sie im <a href="admin.html">Katalog-Editor</a> durch deine eigenen.</div></div>
+      <div class="catalog-tools"><div class="search-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg><input id="search-input" type="search" aria-label="Plugins durchsuchen" placeholder="Suche nach Plugins, Tags oder Funktionen ..." autocomplete="off"><kbd>⌕</kbd></div><label class="sort-wrap"><span>Sortieren</span><select id="sort-select" aria-label="Sortierung"><option value="new">Neueste zuerst</option><option value="az">Name A–Z</option><option value="za">Name Z–A</option></select></label></div>
+      <div class="filter-row" id="category-filters" role="group" aria-label="Nach Kategorie filtern"></div>
+      <div class="plugin-grid" id="plugin-grid" aria-live="polite"></div>
+      <div class="empty-state" id="empty-state" hidden><div class="empty-icon">⌕</div><h3>Keine Plugins gefunden</h3><p>Versuch einen anderen Suchbegriff oder wähle eine andere Kategorie.</p><button type="button" class="button button-ghost" id="reset-filters">Filter zurücksetzen</button></div>
+    </section>
+
+    <section class="how-section" id="so-gehts"><div class="container"><div class="section-intro how-intro"><div><span class="section-label"><span class="section-line"></span> SO EINFACH GEHT'S</span><h2>In drei Schritten <span>startklar.</span></h2><p>Kein Account nötig. Einfach durchstöbern und herunterladen.</p></div></div><div class="steps-grid"><div class="step"><span class="step-number">01</span><div class="step-symbol">⌕</div><h3>Entdecken</h3><p>Suche im Katalog nach einem Plugin, das zu deinem Vorhaben passt.</p></div><div class="step"><span class="step-number">02</span><div class="step-symbol">◈</div><h3>Details prüfen</h3><p>Lies die Beschreibung und kontrolliere Version und Kompatibilität.</p></div><div class="step"><span class="step-number">03</span><div class="step-symbol">↓</div><h3>Herunterladen</h3><p>Klicke auf Download und folge den Installationshinweisen des Plugins.</p></div></div></div></section>
+
+    <section class="bottom-cta container"><div class="bottom-cta-panel"><div class="cta-glow" aria-hidden="true"></div><div><span class="section-label">DEIN PROJEKT. DEINE TOOLS.</span><h2>Bereit für das nächste Plugin?</h2><p>Entdecke die Auswahl und hol dir die passende Erweiterung.</p></div><a href="#plugins" class="button button-primary">Zum Katalog <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><div><div class="brand footer-brand"><span class="brand-logo" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span class="brand-name" data-site-name>PLUGBASE</span><span class="brand-dot">.</span></div><p>Mit Liebe zu guten Tools gemacht.</p></div><div class="footer-links"><a href="#plugins">Plugins</a><a href="admin.html">Katalog-Editor</a><a href="mailto:kontakt@example.com" id="contact-link" hidden>Kontakt</a></div><small>© <span id="year">2026</span> <span data-site-name>PLUGBASE</span></small></div></footer>
+
+  <dialog id="plugin-modal" class="plugin-dialog" aria-labelledby="modal-title"><button type="button" class="modal-close" id="modal-close" aria-label="Schließen">×</button><div id="modal-content"></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
