@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b16">
+  <title>Katalog-Editor – PLUGBASE</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="plugins.js"></script>
+  <script defer src="admin.js"></script>
+</head>
+<body class="admin-page">
+  <div class="background-grid" aria-hidden="true"></div>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="index.html"><span class="brand-logo" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span class="brand-name">PLUGBASE</span><span class="brand-dot">.</span></a><nav class="top-nav"><a class="nav-link" href="index.html">← Zur Website</a></nav><a class="header-cta" href="index.html">Website ansehen ↗</a></div></header>
+  <main class="container admin-main">
+    <div class="admin-heading"><div><span class="section-label"><span class="section-line"></span> LOKALES VERWALTUNGSTOOL</span><h1>Dein Katalog-<span>Editor.</span></h1><p>Plugins verwalten, Downloads verlinken und eine fertige Katalog-Datei für deine Website erzeugen.</p></div><span class="local-badge"><span></span> Nur lokal – kein Login</span></div>
+    <div class="notice-panel"><span>ⓘ</span><p><strong>Wichtig:</strong> Das ist ein kostenloser Editor ohne Server. Deine Änderungen sind zunächst <strong>nur auf diesem Gerät</strong> gespeichert. Erst wenn du die exportierte <code>plugins.js</code> auf GitHub hochlädst, sieht sie jeder. Hochgeladene ZIP-Dateien werden hier <strong>nicht</strong> automatisch ins Internet übertragen.</p></div>
+    <div class="admin-layout">
+      <div class="admin-sidebar"><div class="admin-sidebar-header"><h2>Meine Plugins</h2><span class="catalog-count" id="admin-count">0</span></div><div id="admin-plugin-list" class="admin-plugin-list"></div><button id="add-plugin" class="button button-primary full-width" type="button">＋ Neues Plugin</button><button id="clear-demo" class="subtle-button" type="button">Alle Demo-Plugins entfernen</button></div>
+      <div class="admin-editor"><div class="editor-top"><div><span class="editor-kicker">PLUGIN BEARBEITEN</span><h2 id="editor-heading">Plugin auswählen</h2></div><button type="button" id="delete-plugin" class="delete-button">Löschen</button></div>
+        <form id="plugin-form" class="plugin-form">
+          <div class="form-grid"><label class="field">Plugin-Name <input name="name" required maxlength="70" placeholder="z. B. Mein Cooles Plugin"></label><label class="field">Version <input name="version" required maxlength="30" placeholder="z. B. 1.0.0"></label></div>
+          <label class="field">Kurzbeschreibung <textarea name="description" rows="2" required maxlength="210" placeholder="Was macht dein Plugin?"></textarea></label>
+          <label class="field">Ausführliche Beschreibung <textarea name="details" rows="3" maxlength="1500" placeholder="Für wen ist das Plugin? Was kann es?"></textarea></label>
+          <div class="form-grid"><label class="field">Kategorie <select name="category"><option value="Tools">Tools</option><option value="Design">Design</option><option value="Integrationen">Integrationen</option><option value="Utilities">Utilities</option><option value="Sonstiges">Sonstiges</option></select></label><label class="field">Plattform / Kompatibilität <input name="platform" maxlength="80" placeholder="z. B. Minecraft Paper 1.21"></label></div>
+          <div class="form-grid"><label class="field">Icon / Emoji <input name="icon" maxlength="8" placeholder="🧩"></label><label class="field">Farbakzent <select name="color"><option value="violet">Violett</option><option value="cyan">Türkis</option><option value="pink">Pink</option><option value="orange">Orange</option><option value="green">Grün</option></select></label></div>
+          <label class="field">Download-Link oder Dateiname <input name="download" required placeholder="mein-plugin.zip oder https://github.com/..." spellcheck="false"><small>Für kleine Dateien: Dateiname im Hauptordner. Für große Dateien: direkter GitHub-Releases-Link.</small></label>
+          <label class="file-helper"><span>▤</span><span><strong>Dateinamen einer Plugin-Datei übernehmen</strong><small>Dies wählt nur den Namen aus – die Datei musst du separat bei GitHub hochladen.</small></span><input id="file-picker" type="file" accept=".zip,.jar,.mcpack,.phar,.tar,.gz,.dll,.js,.json,.plugin,.whl,.py,.rbxmx,.rbxm" aria-label="Plugin-Datei lokal auswählen"></label>
+          <div class="form-grid"><label class="field">Tags (durch Kommas trennen) <input name="tags" placeholder="Tool, Performance, Utility"></label><label class="field">Letztes Update <input name="updated" type="date"></label></div>
+          <label class="field check-field"><input name="featured" type="checkbox"> Als Highlight markieren</label>
+          <div class="form-actions"><button type="submit" class="button button-primary">Änderungen übernehmen</button><span id="save-note" class="save-note" aria-live="polite"></span></div>
+        </form>
+      </div>
+    </div>
+    <section class="admin-export"><div><span class="section-label">DEINE WEBSITE ANPASSEN</span><h2>Website-Einstellungen</h2><p>Name und Texte deiner Plugin-Seite.</p></div><div class="settings-grid"><label class="field">Website-Name <input id="site-name" maxlength="30" placeholder="PLUGBASE"></label><label class="field">Ersteller / Team <input id="site-author" maxlength="60" placeholder="Dein Name"></label><label class="field">Titel der Startseite <input id="site-headline" maxlength="110"></label><label class="field">Untertitel <textarea id="site-description" rows="2" maxlength="240"></textarea></label><label class="field">Kontakt-E-Mail (optional) <input id="site-contact" type="email" placeholder="mail@beispiel.de"></label></div></section>
+    <section class="publish-panel"><div><span class="section-label">LETZTER SCHRITT</span><h2>Änderungen veröffentlichen</h2><p>Speichere die Katalog-Datei und ersetze damit <code>plugins.js</code> in deinem GitHub-Repository. Lade neue Plugin-ZIPs dort ebenfalls hoch oder verwende einen GitHub-Releases-Link.</p><div class="publish-actions"><button type="button" class="button button-primary" id="export-btn">↓ plugins.js herunterladen</button><button type="button" class="button button-ghost" id="import-btn">↑ Vorhandene Datei importieren</button><input type="file" id="import-file" accept=".js,.json" hidden><button type="button" class="button button-ghost" id="reset-btn">Entwurf zurücksetzen</button></div><small id="publish-status" aria-live="polite">Tipp: Eine Schritt-für-Schritt-Anleitung liegt in der Datei ANLEITUNG.md.</small></div><div class="publish-icon" aria-hidden="true">↗</div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><small>Dieser Editor arbeitet lokal in deinem Browser und benötigt keinen Server.</small><a href="index.html" class="nav-link">Zurück zum Katalog ↗</a></div></footer>
+</body>
+</html>
